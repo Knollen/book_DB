@@ -1,0 +1,143 @@
+use mydb
+
+Update book
+set name = "Der BlaueGraueGroßeWal"
+where idbook = 2;
+
+Delete
+from book
+where idbook = 1;
+
+Select *
+from book;
+
+
+Insert book
+values (1, "Der Blauwal");
+
+Insert book
+values (4, "Blaue Große Der Wal");
+
+Select *
+from book;
+
+Alter Table book
+ADD rented_time datetime;
+
+Select *
+from book;
+
+Alter Table book
+drop column rented_time;
+
+Alter Table book
+Add rented_time Date;
+
+Update book
+set rented_time = '2023-04-30'
+where idbook = 1;
+
+Update book
+set rented_time = '2023-04-20'
+where idbook = 2;
+
+Update book
+set rented_time = '2023-04-10'
+where idbook = 3;
+
+Update book
+set rented_time = '2023-04-01'
+where idbook = 4;
+
+Select *
+from book;
+
+Alter Table book
+drop column rented_time;
+
+Alter Table transaction
+add rent_start Date;
+
+Alter Table transaction
+add rent_end Date;
+
+Select *
+from transaction;
+
+Update transaction
+set rent_start = '2023-04-01'
+where idtransaction = 1;
+
+Select *
+from transaction;
+
+Update transaction
+set rent_start = '2023-04-09'
+where idtransaction = 2;
+
+Update transaction
+set rent_start = '2023-04-19'
+where idtransaction = 3;
+
+Select *
+from transaction;
+
+Update transaction
+set rent_start = '2023-04-19'
+where idtransaction = 3;
+
+Select *
+from transaction;
+
+Insert transaction
+values (2, 10, 3, 2, '2023-04-09', '2023-04-19');
+
+Select *
+from transaction;
+
+Select *
+from customer;
+
+Select *
+from transaction;
+
+Insert transaction
+values (3, 13, 4, 1, '2023-05-01', '2023-05-09');
+
+Select *
+from transaction;
+
+Select *
+from transaction
+where rent_start > '2023-04-30';
+
+Select *
+from transaction
+where rent_start > '2023-04-30' or rent_start < '2023-06-01';
+
+Select *
+from transaction
+where rent_start > '2023-04-30' and rent_start < '2023-06-01';
+
+Insert customer
+values (4, "Bodo Cheffe");
+
+Select *
+from customer;
+
+Insert transaction
+values (4, 3000, 4, 4, '2023-05-12', '2023-06-09');
+
+Select *
+from transaction
+where rent_start > '2023-04-30' and rent_start < '2023-06-01';
+
+Select idtransaction, customer_idcustomer, rent_start, rent_end
+from transaction;
+
+Select idtransaction, customer_idcustomer, rent_start, rent_end, customer.name
+from transaction join customer;
+
+Select idtransaction, customer_idcustomer, rent_start, rent_end, customer.name
+from transaction join customer
+on customer_idcustomer=idcustomer;
